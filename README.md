@@ -35,3 +35,13 @@ python app.py
 
 5. Open the website in your browser at:
 http://127.0.0.1:5000/
+
+
+Contributors
+Sofia Tejada – Front-end development
+Helen Ton – Back-end development
+
+Contact:
+For any inquiries, please reach out via:
+Email: sofiatejada001@gmail.com
+LinkedIn: https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile
