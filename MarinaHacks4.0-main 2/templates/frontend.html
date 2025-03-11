@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #FDC1CC;
+        }
+
+        /* General Section Styling */
+        .section {
+            margin-bottom: 50px;
+            padding: 20px;
+        }
+
+        /* Image Sections */
+        #new-img-section, #moved-img-section {
+            text-align: center;
+        }
+
+        .new-img, .moved-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .new-img {
+            width: 690px;
+            height: 250px;
+            animation: fadeInAnimation ease 5s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        .moved-img {
+            width: 200px;
+            height: 350px;
+            transition: transform 0.5s ease;
+        }
+
+        @keyframes fadeInAnimation {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Form Section */
+        .form-container {
+            position: absolute;
+            top: 400px;
+            left: 50%;
+            transform: translate(-50%, 340px);
+            font-size: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #end {
+            display: inline-block;
+            width: 300px;
+            height: 80px; /* Increased height */
+            font-size: 20px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        #get-directions {
+            width: 320px;
+            height: 65px;
+            font-size: 20px;
+            padding: 10px;
+            font-family: cursive;
+        }
+
+        /* Container for the grid of images */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px;
+            justify-items: center;
+            margin-top: 50px;
+        }
+        .last-row {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+
+
+
+        }
+        .image-container {
+<!--            text-align: center;-->
+        display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 10px;
+        }
+
+        .round-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .image-text {
+            text-align = center;
+            margin: 5px 0;
+
+        }
+
+        /* Directions Section */
+        #directions-section {
+            font-family: Arial;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        #directions {
+            padding: 10px;
+        }
+
+        #directions h2 {
+            font-family: 'Lucida Handwriting', cursive;
+        }
+
+        /* Ensure list items use Arial */
+        #directions ul li {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Map Section */
+        #map-section {
+            text-align: center;
+        }
+
+        #map {
+            border: 0;
+            width: 600px;
+            height: 450px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="section" id="new-img-section">
+        <img src="{{ url_for('static', filename='images/IMG_3791.jpeg') }}" alt="Cute Coffee" class="new-img">
+    </div>
+
+    <div class="section" id="moved-img-section">
+        <img src="{{ url_for('static', filename='images/IMG_3785.jpeg') }}" alt="Cute Coffee" class="moved-img">
+    </div>
+
+    <div class="section" id="form-section">
+        <div class="form-container">
+            <input type="text" id="end" placeholder="Enter your cafe destination" required>
+            <button id="get-directions">Get Directions</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <h2><b>Cyclops Coffee</b></h2>
+            <img src="{{ url_for('static', filename='images/cyclops.jpg') }}" alt="Cyclops Coffee" class="round-img">
+            <p class="image-text">1.7 mi</p>
+            <p class="image-text">Type "Cyclops Coffee" in the field!</p>
+        </div>
+        <div class="image-container">
+            <h2><b>V Cafe</b></h2>
+            <img src="{{ url_for('static', filename='images/v_cafe.jpg') }}" alt="V Cafe" class="round-img">
+            <p class="image-text">1.8 mi</p>
+            <p class="image-text">Type "V Cafe" in the field!</p>
+        </div>
+        <div class="image-container">
+            <h2><b>Chapter II Coffee</b></h2>
+            <img src="{{ url_for('static', filename='images/chapter_II.jpg') }}" alt="Chapter II Coffee" class="round-img">
+            <p class="image-text">3.7 mi</p>
+            <p class="image-text">Type "Chapter II Coffee" in the field!</p>
+        </div>
+        <div class="image-container">
+            <h2><b>Viento y Agua Coffee House</b></h2>
+            <img src="{{ url_for('static', filename='images/viento_y_agua.jpg') }}" alt="Viento y Agua Coffee House" class="round-img">
+            <p class="image-text">2.5 mi</p>
+            <p class="image-text">Type "Viento y Agua Coffee House" in the field!</p>
+        </div>
+        <div class="image-container">
+            <h2><b>Stereoscope Coffee</b></h2>
+            <img src="{{ url_for('static', filename='images/stereoscope.jpg') }}" alt="Stereoscope Coffee" class="round-img">
+            <p class="image-text">2.6 mi</p>
+            <p class="image-text">Type "Stereoscope Coffee" in the field!</p>
+        </div>
+        <div class="image-container">
+            <h2><b>Good Time</b></h2>
+            <img src="{{ url_for('static', filename='images/good_time.jpg') }}" alt="Good Time" class="round-img">
+            <p class="image-text">3.1 mi</p>
+            <p class="image-text">Type "Good Time" in the field!</p>
+        </div>
+        <div class="image-container">
+            <h2><b>Set Forth Coffee</b></h2>
+            <img src="{{ url_for('static', filename='images/set_forth.jpg') }}" alt="Set Forth Coffee" class="round-img">
+            <p class="image-text">2.6 mi</p>
+            <p class="image-text">Type "Set Forth Coffee" in the field!</p>
+        </div>
+        <div class="image-container">
+            <h2><b>Rad Coffee</b></h2>
+            <img src="{{ url_for('static', filename='images/rad.jpg') }}" alt="Rad Coffee" class="round-img">
+            <p class="image-text">6.3 mi</p>
+            <p class="image-text">Type "Rad Coffee" in the field!</p>
+        </div>
+        <!-- Optional placeholder to make it a 3x3 grid -->
+        <div class="image-container"></div>
+    </div>
+
+    <div class="section" id="directions-section">
+        <div id="directions">
+            <h2 style="color:#90633C;">Directions:</h2>
+            <ul id="directions-list"></ul>
+        </div>
+    </div>
+
+    <div class="section" id="map-section">
+        <iframe
+            id="map"
+            loading="lazy"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#get-directions').click(function() {
+            const end = $('#end').val();
+
+            // Send a GET request to the directions endpoint in app.py
+            $.get(`/directions?&end=${end}`, function(data) {
+                $('#directions-list').empty(); // Clear previous directions
+                if (data.error) {
+                    $('#directions-list').append(`<li>${data.error}</li>`);
+                } else {
+                    data.forEach(function(step) {
+                        $('#directions-list').append(`<li>${step}</li>`); // Append each step in the direction
+                    });
+                }
+                $('#directions').show(); // Show the directions section
+
+                // Load the Google Map after getting directions
+                loadGoogMap(end);
+            }).fail(function(jqXHR) {
+                $('#directions-list').empty();
+                $('#directions-list').append(`<li>Error: ${jqXHR.responseJSON.error}</li>`);
+                $('#directions').show();
+            });
+        });
+    });
+
+    async function loadGoogMap(destinationName) {
+        const response = await fetch('/cafe_places'); // Load the JSON file
+        const locations = await response.json(); // Parse the JSON data
+
+        const destination = locations.find(loc => loc.name === destinationName);
+        if (!destination) {
+            console.error('Destination not found in locations');
+            return;
+        }
+
+        const latitude = destination.location.lat;
+        const longitude = destination.location.long;
+
+        const API_KEY = 'AIzaSyCLCPDVcLovQkWDYM8BRNBV-VLA7vNwsxA'
+        const iframeSrc = `https://www.google.com/maps/embed/v1/directions?key=${API_KEY}&origin=33.78193619731233,-118.11484054578304&destination=${latitude},${longitude}`;
+
+        document.getElementById('map').src = iframeSrc; // Set the iframe source
+    }
+    </script>
+
+</body>
+</html>
